@@ -9,4 +9,9 @@ public class DanceCoach implements Coach {
     public String getDailyWorkout() {
         return "Dance for 2 hours";
     }
+
+    @Override
+    public String getDailyFortune() {
+        return null;
+    }
 }
