@@ -2,6 +2,8 @@ package com.luv2code.springdemo;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -19,6 +21,13 @@ public class FileFortuneService implements FortuneService {
     private Random random = new Random();
 
     public FileFortuneService() {
+        System.out.println(" >>> Inside FileFortuneService constructor");
+        }
+
+    @PostConstruct
+    private void loadFortunesFromFile() {
+
+        System.out.println(" >>> Inside loadFortunesFromFile");
 
         File theFile = new File(fileName);
 
