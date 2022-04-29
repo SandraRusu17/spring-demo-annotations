@@ -1,45 +1,20 @@
 package com.luv2code.springdemo;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+public class SwimCoach implements Coach{
 
-@Component
-public class SwimCoach implements Coach {
+    private FortuneService fortuneService;
 
-    @Autowired
-    private FileFortuneService fileFortuneService;
-
-
-    @Value("${foo.email}")
-    private String email;
-
-    @Value("${foo.team}")
-    private String team;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTeam() {
-        return team;
-    }
-
-    public void setTeam(String team) {
-        this.team = team;
+    public SwimCoach(FortuneService fortuneService) {
+        this.fortuneService = fortuneService;
     }
 
     @Override
     public String getDailyWorkout() {
-        return null;
+        return "Swim 1000 meters. ";
     }
 
     @Override
     public String getDailyFortune() {
-        return fileFortuneService.getFortune();
+        return fortuneService.getFortune();
     }
 }
